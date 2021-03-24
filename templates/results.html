@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/chartjs-plugin-colorschemes.js') }}"></script>
+
+<div>
+    <div>
+      <div>
+        <h1>Word Cloud</h1>
+        <img src="{{ url_for('static', filename=word_cloud) }}" width="90%" max-width="800px">
+      </div>
+    </div>
+  </div>
+  
+
+  <div width="400px" height="400px">
+    <h1>Messages Per User</h1>
+        <canvas id="messagesPerUser"></canvas>
+  </div>
+
+  <div width="400px" height="400px">
+    <h1>10 Busiest Days</h1>
+        {{ top_10_dates | safe }}
+  </div>
+
+  <div width="400px" height="400px">
+    <h1>Messages Over Time</h1>
+    <canvas id="messagesOverTime"></canvas>
+    {{ messages_over_time | safe }}
+  </div>
+
+<script>
+var ctx = document.getElementById('messagesPerUser').getContext('2d');
+var user_messages = JSON.parse('{{ user_messages | safe }}');
+var keys = Object.keys(user_messages);
+var values = Object.values(user_messages);
+var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: keys,
+        datasets: [{
+            label: 'Number of Messages by User',
+            data: values,
+        }]
+    },
+    options: {
+      plugins: {
+        colorschemes: {
+          scheme: 'office.Celestial6'
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  var ctx = document.getElementById('messagesOverTime').getContext('2d');
+  var user_messages = JSON.parse('{{ messages_over_time | safe }}');
+  var keys = Object.keys(user_messages);
+  var values = Object.values(user_messages);
+  var dataset =  {
+      type: 'line',
+      data: {
+          labels: keys,
+          datasets: []
+      },
+      options: {
+        plugins: {
+          colorschemes: {
+            scheme: 'office.Celestial6'
+          }
+        }
+      }
+    };
+
+</script>
+
+
+{% endblock %}
