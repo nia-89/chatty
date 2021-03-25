@@ -33,7 +33,11 @@ def index():
             data_frame = mcd.generate_data_frame(data)
             words = mcd.split_messages_into_words(data_frame)
             words_for_cloud = ' '.join(words)
-            word_cloud = mcd.generate_word_cloud(words_for_cloud)
+            if request.form.get('mask'):
+                mask_img = request.form.get('mask')
+                word_cloud = mcd.generate_word_cloud(words_for_cloud, selected_mask=mask_img)
+            else:
+                word_cloud = mcd.generate_word_cloud(words_for_cloud)
             messages_by_user = mcd.get_number_of_messages_by_user(data_frame).to_json()
             messages_by_date_top_10 = mcd.get_number_of_messages_by_date(data_frame).head(10).to_html(header=False)
             #TODO Messages over time chart
