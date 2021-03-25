@@ -5,10 +5,20 @@ Analyze Your WhatsApp Chat
 This was originally meant to be a really quick Valentine's day surprise for my husband while learning Python but ended up growing into something more. Once this version is done, I'm planning on refactoring the application and adding unit and feature testing.
 
 > py -3 -m venv venv
+
+
 > venv\Scripts\activate
+
+
 > pip install -r requirements.txt
+
+
 > set FLASK_APP=main.py
+
+
 > set FLASK_ENV=development
+
+
 > flask run
 
 Access http://localhost:5000 in your favourite browser
