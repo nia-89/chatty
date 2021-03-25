@@ -1,28 +1,36 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h2>Analyze your WhatsApp chat!</h2>
+<div class="banner">
+  <h1 class="banner-head">Analyze your WhatsApp chat!</h1>
+</div>
 
-<p></p>
-
-<br>
-
-<form method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" accept=".txt">
-  <input type="submit" value="Upload">
-  </br></br>
-  <label for="mask">Wordcloud Shape</label>
-  <select id="mask" name="mask">
-    <option value="square">Square</option>
-    <option value="chat_bubble_rounded">Rounded Chat Bubble</option>
-    <option value="chat_bubble_square">Square Chat Bubble</option>
-    <option value="circle">Circle</option>
-    <option value="cloud">Cloud</option>
-    <option value="heart_wider">Heart - Wide</option>
-    <option value="heart">Heart</option>
-    <option value="house">House</option>
-    <option value="triangle">Triangle</option>
-  </select>
-</form>
+<div class="l-content">
+    <form class="pure-form pure-form-aligned" method="POST" enctype="multipart/form-data">
+      <fieldset>
+          <div class="pure-control-group">
+            <label for="file">Text File:</label>
+            <input type="file" name="file" accept=".txt">
+          </div>
+          <div class="pure-control-group">
+            <label for="mask">Wordcloud Shape:</label>
+            <select id="mask" name="mask">
+              <option value="square">Square</option>
+              <option value="chat_bubble_rounded">Rounded Chat Bubble</option>
+              <option value="chat_bubble_square">Square Chat Bubble</option>
+              <option value="circle">Circle</option>
+              <option value="cloud">Cloud</option>
+              <option value="heart_wider">Heart - Wide</option>
+              <option value="heart">Heart</option>
+              <option value="house">House</option>
+              <option value="triangle">Triangle</option>
+            </select>
+          </div>
+          <div class="pure-controls">
+            <button type="submit" value="Upload" class="pure-button pure-button-primary">Upload</button>
+          </div>
+      </fieldset>
+    </form>
+</div>
 
 {% endblock %}

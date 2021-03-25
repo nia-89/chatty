@@ -1,54 +1,38 @@
-html, body {
-    height: 100%;
-}
-
-body {
+.l-content {
     display: flex;
-    flex-direction: column;
-    margin: 0;
-    font: 16px Sans-Serif;
+    justify-content: center;
 }
 
-.content {
-    flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-    padding: 20px;
+.banner {
+    background: transparent linear-gradient(135deg, #667eea 0%, #764ba2 100%) 0 0 no-repeat fixed;
+    text-align: center;
+    background-size: cover;
+    filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(linear-gradient(135deg, #667eea 0%, #764ba2 100%), sizingMethod='scale');
+    height: 200px;
+    width: 100%;
+    margin-bottom: 3em;
+    display: table;
+}
+
+.banner-head {
+    display: table-cell;
+    vertical-align: middle;
+    margin-bottom: 0;
+    font-size: 2em;
+    color: white;
+    font-weight: 500;
 }
 
 .footer {
-    flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-    padding: 20px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-h1 {
-    margin: 0 0 20px 0;
-}
-
-p {
-    margin: 0 0 20px 0;
-}
-
-header {
-    margin: 0 0 20px 0;
-}
-
-.dataframe {
-    border-collapse: collapse;
-    width: 95%;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-}
-
-.dataframe td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-.dataframe tr:hover {
-    background-color: #9e4caf;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
     color: white;
+    text-align: center;
+}
+
+.pure-button-primary {
+    background-color: #654ba2;
 }
