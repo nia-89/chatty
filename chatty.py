@@ -1,9 +1,11 @@
 import time
+from os import path
 import glob
 import re
 import pandas
 import numpy
 import matplotlib.pyplot as plt
+from PIL import Image
 import json
 import emoji
 from wordcloud import WordCloud, STOPWORDS
@@ -70,14 +72,14 @@ def split_messages_into_words(data_frame):
     words = split_messages.explode("Message")
     return words
 
-def generate_word_cloud(words, masked=False, selected_mask=''):
-    if masked ==  True:
-        mask = selected_mask
+def generate_word_cloud(words, selected_mask=None):
     custom_stopwords = ['X','x','XXX','xxx','ok','OK'] + list(STOPWORDS)
+    mask = numpy.array(Image.open(path.join('static/img/wordcloud_mask/', selected_mask + ".PNG")))
     wordcloud = WordCloud(
         width = 1000,
         height = 1000,
         background_color = 'rgba(255, 255, 255, 0)', mode='RGBA',
+        mask=mask,
         stopwords = custom_stopwords).generate(str(words))
     word_cloud_url = 'img/wordcloud/wordcloud_' + time.strftime('%Y-%m-%d_%H%M%S') + '.png'
     wordcloud.to_file('static/' + word_cloud_url)
