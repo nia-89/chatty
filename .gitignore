@@ -1,5 +1,5 @@
-imports/
-static/img/wordcloud
+imports/*.txt
+static/img/wordcloud/*.png
 
 venv/
 .env
