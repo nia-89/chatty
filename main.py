@@ -25,7 +25,6 @@ def index():
         if uploaded_file and allowed_file(uploaded_file.filename):
             filename = secure_filename(time.strftime('%Y-%m-%d_%H%M%S') + '_' + uploaded_file.filename)
             uploaded_file = uploaded_file.save('imports/' + time.strftime('%Y-%m-%d_%H%M%S') + '_' + uploaded_file.filename)
-            #process_data(filename)
             import chatty as mcd
             filename = 'imports/' + filename
             chat_text = mcd.open_whatsapp_txt(filename)
@@ -48,44 +47,6 @@ def index():
                 top_10_dates=messages_by_date_top_10
                 )
     return render_template('index.html')
-
-# def process_data(filename):
-#     import my_chat_data as mcd
-#     filename = 'imports/' + filename
-#     chat_text = mcd.open_whatsapp_txt(filename)
-#     data = mcd.parse_whatsapp_txt(chat_text)
-#     data_frame = mcd.generate_data_frame(data)
-#     words = mcd.split_messages_into_words(data_frame)
-#     words_for_cloud = ' '.join(words)
-#     word_cloud = mcd.generate_word_cloud(words_for_cloud)
-#     messages_by_user = mcd.get_number_of_messages_by_user(data_frame).to_json()
-#     messages_by_date_top_10 = mcd.get_number_of_messages_by_date(data_frame).head(10).to_html(header=False)
-#     #TODO Messages over time chart
-#     #messages_over_time = mcd.get_messages_over_time_by_user(data_frame).to_json()
-#     return render_template('results.html',
-#         word_cloud=word_cloud,  
-#         user_messages=messages_by_user,
-#         top_10_dates=messages_by_date_top_10
-#         )
-
-# @app.route('/results')
-# def results(filename):
-#     import my_chat_data as mcd
-#     chat_text = mcd.open_whatsapp_txt(filename)
-#     data = mcd.parse_whatsapp_txt(chat_text)
-#     data_frame = mcd.generate_data_frame(data)
-#     words = mcd.split_messages_into_words(data_frame)
-#     words_for_cloud = ' '.join(words)
-#     word_cloud = mcd.generate_word_cloud(words_for_cloud)
-#     messages_by_user = mcd.get_number_of_messages_by_user(data_frame).to_json()
-#     messages_by_date_top_10 = mcd.get_number_of_messages_by_date(data_frame).head(10).to_html(header=False)
-#     #TODO Messages over time chart
-#     #messages_over_time = mcd.get_messages_over_time_by_user(data_frame).to_json()
-#     return render_template('results.html',
-#         word_cloud=word_cloud,  
-#         user_messages=messages_by_user,
-#         top_10_dates=messages_by_date_top_10
-#         )
 
 if __name__ == '__main__':
     app.run(debug=True)
