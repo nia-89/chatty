@@ -7,7 +7,6 @@ import numpy
 import matplotlib.pyplot as plt
 from PIL import Image
 import json
-import emoji
 from wordcloud import WordCloud, STOPWORDS
 
 def get_available_chats():
