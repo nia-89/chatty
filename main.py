@@ -27,7 +27,7 @@ def index():
             filename = secure_filename(time.strftime('%Y-%m-%d_%H%M%S') + '_' + uploaded_file.filename)
             uploaded_file = uploaded_file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             import chatty as mcd
-            filename = 'imports/' + filename
+            filename = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename)
             chat_text = mcd.open_whatsapp_txt(filename)
             data = mcd.parse_whatsapp_txt(chat_text)
             data_frame = mcd.generate_data_frame(data)
