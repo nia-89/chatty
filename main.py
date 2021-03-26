@@ -6,8 +6,9 @@ import os
 
 app = Flask(__name__)
 
+app.config.from_pyfile('config.py')
+
 ALLOWED_EXTENSIONS = {'txt'}
-UPLOAD_FOLDER = '/imports'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -24,7 +25,7 @@ def index():
             return redirect(request.url)
         if uploaded_file and allowed_file(uploaded_file.filename):
             filename = secure_filename(time.strftime('%Y-%m-%d_%H%M%S') + '_' + uploaded_file.filename)
-            uploaded_file = uploaded_file.save('imports/' + time.strftime('%Y-%m-%d_%H%M%S') + '_' + uploaded_file.filename)
+            uploaded_file = uploaded_file.save(os.path.join(app.root_path, app.config['UPLOAD_FOLDER'], filename))
             import chatty as mcd
             filename = 'imports/' + filename
             chat_text = mcd.open_whatsapp_txt(filename)
