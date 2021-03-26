@@ -4,31 +4,35 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://unpkg.com/chartjs-plugin-colorschemes"></script>
 
-<div>
-    <div>
-      <div>
-        <h1>Word Cloud</h1>
-        <img src="{{ url_for('static', filename=word_cloud) }}" width="90%" max-width="800px">
+<div class="banner">
+  <h1 class="banner-head">Results</h1>
+</div>
+
+<div class="l-content">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="result-card">
+          <h2>Word Cloud</h2>
+          <img src="{{ url_for('static', filename=word_cloud) }}" width="90%" max-width="800px">
+        </div>
       </div>
-    </div>
-  </div>
-  
 
-  <div width="400px" height="400px">
-    <h1>Messages Per User</h1>
-        <canvas id="messagesPerUser"></canvas>
-  </div>
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="result-card">
+          <h2>Messages Per User</h2>
+          <canvas id="messagesPerUser"></canvas>
+        </div>
+      </div>
 
-  <div width="400px" height="400px">
-    <h1>10 Busiest Days</h1>
-        {{ top_10_dates | safe }}
-  </div>
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="result-card">
+          <h2>10 Busiest Days</h2>
+          {{ top_10_dates | safe }}
+        </div>
+      </div>
 
-  <div width="400px" height="400px">
-    <h1>Messages Over Time</h1>
-    <canvas id="messagesOverTime"></canvas>
-    {{ messages_over_time | safe }}
   </div>
+</div>
 
 <script>
 var ctx = document.getElementById('messagesPerUser').getContext('2d');

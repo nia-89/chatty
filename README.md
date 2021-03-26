@@ -31,4 +31,5 @@ Access http://localhost:5000 in your favourite browser
 - [x] Choose a shape for the wordcloud
 - [ ] Choose a colour palette for the wordcloud
 - [ ] Emoji analysis
+- [ ] Loading bar during file upload and processing
 

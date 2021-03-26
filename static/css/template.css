@@ -36,3 +36,18 @@
 .pure-button-primary {
     background-color: #654ba2;
 }
+
+.pure-menu-heading .pure-menu-link :hover {
+    color: white;
+    background-color: #654ba2;
+}
+
+.result-card {
+    border: 1px solid grey;
+    margin: 1.5em;
+    padding: 1.5em;
+}
+
+.result-card h2 {
+    text-align: center;
+}
