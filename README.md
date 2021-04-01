@@ -2,6 +2,8 @@
 
 Analyze Your WhatsApp Chat
 
+![Demo GIF](demo/demo.gif)
+
 This was originally meant to be a really quick Valentine's day surprise for my husband while learning Python but ended up growing into something more. Once this version is done, I'm planning on refactoring the application and adding unit and feature testing.
 
 > py -3 -m venv venv
